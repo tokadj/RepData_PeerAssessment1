@@ -419,13 +419,13 @@ sumna</code></pre>
 </div>
 <div id="devise-a-strategy-for-filling-in-all-of-the-missing-values-in-the-dataset.-the-strategy-does-not-need-to-be-sophisticated.-for-example-you-could-use-the-meanmedian-for-that-day-or-the-mean-for-that-5-minute-interval-etc." class="section level3">
 <h3>2.Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.</h3>
+<pre class="r"><code>newdt&lt;-dt
+na&lt;-which(is.na(dt$steps))
+meantona&lt;-rep(mean(newdt$steps,na.rm=TRUE,times=length(na)))</code></pre>
 </div>
 <div id="create-a-new-dataset-that-is-equal-to-the-original-dataset-but-with-the-missing-data-filled-in." class="section level3">
 <h3>3.Create a new dataset that is equal to the original dataset but with the missing data filled in.</h3>
-<pre class="r"><code>newdt&lt;-dt
-na&lt;-which(is.na(dt$steps))
-meantona&lt;-rep(mean(newdt$steps,na.rm=TRUE,times=length(na)))
-newdt[na,&quot;steps&quot;]&lt;-meantona</code></pre>
+<pre class="r"><code>newdt[na,&quot;steps&quot;]&lt;-meantona</code></pre>
 </div>
 <div id="make-a-histogram-of-the-total-number-of-steps-taken-each-day-and-calculate-and-report-the-mean-and-median-total-number-of-steps-taken-per-day.-do-these-values-differ-from-the-estimates-from-the-first-part-of-the-assignment-what-is-the-impact-of-imputing-missing-data-on-the-estimates-of-the-total-daily-number-of-steps" class="section level3">
 <h3>4.Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?</h3>

@@ -90,12 +90,16 @@ sumna
 
 ### 2.Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
 
-### 3.Create a new dataset that is equal to the original dataset but with the missing data filled in.
-
 ```r
 newdt<-dt
 na<-which(is.na(dt$steps))
 meantona<-rep(mean(newdt$steps,na.rm=TRUE,times=length(na)))
+```
+
+
+### 3.Create a new dataset that is equal to the original dataset but with the missing data filled in.
+
+```r
 newdt[na,"steps"]<-meantona
 ```
 
@@ -106,7 +110,7 @@ newtotalsteps<-tapply(newdt$steps, newdt$date, sum)
 hist(newtotalsteps,xlab = "Daily steps (new)",main = "Total daily steps",breaks = 10)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
 
 ```r
 newmean<-mean(newtotalsteps)
@@ -144,5 +148,6 @@ library(lattice)
 xyplot(new$nstep~new$ninterval|new$ndatetype,type="l",xlab = "interval",ylab = "steps",main = "average steps by datetype",layout=c(1,2))
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
+
 
